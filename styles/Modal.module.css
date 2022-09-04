@@ -1,0 +1,30 @@
+.modalBackdrop {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .modalContent {
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 1);
+    width: 60%;
+    min-height: 200px;
+    padding: 25px;
+  }
+  
+  .closeModalButton {
+    flex-direction: row;
+    align-content: flex-start;
+    /* position: fixed; */
+    top: 16em;
+    /* left: 24em; */
+    transition: .5s ease;  
+    background-color: red;
+  }
