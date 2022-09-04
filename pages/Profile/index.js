@@ -4,6 +4,9 @@ import Social from "components/Social";
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { withPageAuth } from '@supabase/supabase-auth-helpers/nextjs'
+
+
 const useStyles = makeStyles((theme) => ({
   snsIcon: {
     width: "30px",
@@ -24,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const About = () => {
+const Profile = () => {
   const classes = useStyles();
   // use your picture
   const avatar =
@@ -88,5 +91,6 @@ const About = () => {
     </Layout>
   );
 };
+export const getServerSideProps = withPageAuth()
 
-export default About;
+export default Profile;

@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
+    "@supabase/supabase-auth-helpers": "^1.4.2",
+    "@supabase/ui": "^0.36.5",
     "clsx": "latest",
     "next": "latest",
     "prop-types": "latest",

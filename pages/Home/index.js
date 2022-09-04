@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Modal from '../../components/Modal';
 
+import { withPageAuth } from '@supabase/supabase-auth-helpers/nextjs'
+
+
 const useStyles = makeStyles((theme) => ({
   btn: {
     background: theme.palette.primary.main,
@@ -84,5 +87,6 @@ const Home = () => {
     </Layout>
   );
 };
+export const getServerSideProps = withPageAuth();
 
 export default Home;

@@ -2,23 +2,55 @@ import styles from '../styles/Landing.module.css'
 import React from "react";
 import Particles from 'react-tsparticles'
 import { loadSnowPreset } from "tsparticles-preset-snow";
+
+import { useUser } from '@supabase/supabase-auth-helpers/react'
+import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
+import { useEffect, useState } from 'react'
+import { Auth } from '@supabase/ui';
+
 import Modal from './Modal';
+
 import {
   useRouter
 } from 'next/router'
+
 
 function play() {
   var audio = document.getElementById('a1');
   audio.play();
 }
 
-function home(router){
+function home(router) {
   router.push('/Home');
 }
 
 function Landing() {
+  const { user, error } = useUser()
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    console.log('User data! ', user)
+    async function loadData() {
+      const { data } = await supabaseClient.from('accounts').select('*')
+      setData(data)
+    }
+    // Only run query once user is logged in.
+    if (user) loadData()
+  }, [user])
+
+  React.useEffect(() => {
+    console.log('User data! ', user)
+    async function loadData() {
+      const { data } = await supabaseClient.from('test').select('*')
+      setData(data)
+    }
+    // Only run query once user is logged in.
+    if (user) loadData()
+  }, [user])
+
   const [showModal, setShowModal] = React.useState(false);
   const router = useRouter()
+
   return (
     <div>
       <main className={styles.main}>
@@ -34,12 +66,21 @@ function Landing() {
             close={() => {
               setShowModal(false);
             }}
-            openPage={() => {
-              home(router)
-              }}
+            // openPage={() => {
+            //   home(router)
+            // }}
           >
-            <h3>The App isnt ready but Feel free to continue</h3>
+            {user ?
+              <h3>Welcome back to the party</h3>
+              : <Auth
+                // view="update_password"
+                supabaseClient={supabaseClient}
+                // providers={['google', 'github', 'apple']}
+                socialLayout="horizontal"
+                socialButtonSize="large"
+              />}
           </Modal>
+
 
           <button className={styles.code} onClick={() => {
             setShowModal(true)
