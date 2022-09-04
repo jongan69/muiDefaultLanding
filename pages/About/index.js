@@ -4,7 +4,6 @@ import Social from "components/Social";
 import { Container, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles((theme) => ({
   snsIcon: {
     width: "30px",

@@ -1,7 +1,7 @@
 // add pages which you want to the array.
 // and make the file in the page folder.
 
-export const routes = [
+export const authRoutes = [
   { name: "Home", link: "/Home" },
   { name: "Profile", link: "/Profile" },
   { name: "Settings", link: "/Settings" },

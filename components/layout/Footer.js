@@ -4,8 +4,12 @@ import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Container, Grid, Typography } from "@material-ui/core";
+import { useUser } from '@supabase/supabase-auth-helpers/react'
 
-import { routes } from "data/routes";
+
+import { authRoutes } from "data/authRoutes";
+import { openRoutes } from "data/openRoutes";
+
 import Social from "components/Social";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,8 +38,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Footer = () => {
+  const { user, error } = useUser()
   const classes = useStyles();
-  const path = routes;
+  const path = user ? authRoutes : openRoutes;
   const router = useRouter();
   return (
     <footer className={classes.footer}>
@@ -67,7 +72,7 @@ const Footer = () => {
           component={"a"}
           target="_blank"
           rel="noreferrer noopener"
-          href="https://satoruakiyama.com"
+          href="https://mui-default-landing.vercel.app/About"
           justify="center"
           style={{
             textDecoration: "none",

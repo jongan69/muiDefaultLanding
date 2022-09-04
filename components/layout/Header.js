@@ -1,6 +1,7 @@
 import Link from "components/Link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useUser } from '@supabase/supabase-auth-helpers/react'
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -19,7 +20,9 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { routes } from "data/routes";
+import { authRoutes } from "data/authRoutes";
+
+import { openRoutes } from "data/openRoutes";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -84,12 +87,13 @@ const Header = () => {
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const { user, error } = useUser()
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const router = useRouter();
 
-  const path = routes;
+  const path = user ? authRoutes: openRoutes;
 
   const tabs = (
     <>

@@ -29,8 +29,8 @@ export default function LandingPage() {
     return (
       <div className={styles.background}>
         <Head>
-          <title>New User Landing</title>
-          <meta name="description" content="New User" />
+          <title>Default Landing</title>
+          <meta name="description" content="Default Landing" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Landing />
