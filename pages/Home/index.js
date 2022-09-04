@@ -1,7 +1,9 @@
 import Layout from "components/layout/Layout";
-
+import { useState } from "react";
 import { Container, Grid, Typography, Avatar, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+import Modal from '../../components/Modal';
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -20,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(true);
   const classes = useStyles();
   return (
     <Layout
@@ -27,6 +30,19 @@ const Home = () => {
       title="MUI Default Landing"
       description="MUI Default Landing."
     >
+      <Modal
+        shown={showModal}
+        close={() => {
+          setShowModal(false);
+        }}
+      >
+        <Typography
+          variant="h3"
+          align="center"
+          gutterBottom
+          style={{ marginBottom: "1em", paddingTop: "1em" }}
+        >Welcome to the Home page! This template uses Nextjs and Material UI</Typography>
+      </Modal>
       <Container maxWidth="md">
         <Typography
           variant="h1"
@@ -50,6 +66,7 @@ const Home = () => {
           </Grid>
           <Grid item>
             <Container maxWidth="sm">
+
               <Typography variant="h2" align="center">
                 MUI Default Landing
               </Typography>
