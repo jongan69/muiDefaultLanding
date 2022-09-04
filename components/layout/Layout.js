@@ -6,7 +6,7 @@ import Head from "next/head";
 const Layout = ({ children, title, description, ogImage, url }) => {
   // website Url
   const pageUrl =
-    "https://nextjs-and-material-ui-template-with-header-and-footer.vercel.app/";
+    "https://mui-default-landing.vercel.app/About";
   // when you share this page on facebook you'll see this image
   const ogImg = "https://i.imgur.com/1H2TK2B.png";
   return (
